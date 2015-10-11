@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: requesters
+#
+#  id              :integer          not null, primary key
+#  first_name      :string
+#  last_name       :string
+#  username        :string
+#  password        :string
+#  department      :string
+#  department_code :string
+#  meeting_place   :text
+#  permission      :string
+#  status          :string
+#  centralized     :boolean          default(TRUE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  department: MyString
+  department_code: MyString
+  meeting_place: MyText
+  permission: MyString
+  status: MyString
+  centralized: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  department: MyString
+  department_code: MyString
+  meeting_place: MyText
+  permission: MyString
+  status: MyString
+  centralized: false
