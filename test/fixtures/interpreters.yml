@@ -1,0 +1,62 @@
+# == Schema Information
+#
+# Table name: interpreters
+#
+#  id          :integer          not null, primary key
+#  first_name  :string
+#  last_name   :string
+#  username    :string
+#  language    :text
+#  staff       :boolean
+#  status      :string           default("Pending")
+#  credentials :text
+#  specilities :text
+#  licenses    :text
+#  gender      :string
+#  vaccines    :text
+#  email       :string
+#  address     :string
+#  city        :string
+#  stat        :string
+#  zip         :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  username: MyString
+  language: MyText
+  staff: false
+  status: MyString
+  credentials: MyText
+  specilities: MyText
+  licenses: MyText
+  gender: MyString
+  vaccines: MyText
+  email: MyString
+  address: MyString
+  city: MyString
+  stat: MyString
+  zip: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  username: MyString
+  language: MyText
+  staff: false
+  status: MyString
+  credentials: MyText
+  specilities: MyText
+  licenses: MyText
+  gender: MyString
+  vaccines: MyText
+  email: MyString
+  address: MyString
+  city: MyString
+  stat: MyString
+  zip: MyString
