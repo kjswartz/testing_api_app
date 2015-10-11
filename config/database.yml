@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  database: testing_api_dev
+  host: localhost
+
+
+test:
+  adapter: postgresql
+  database: testing_api_test
+  host: localhost

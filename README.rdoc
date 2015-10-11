@@ -1,0 +1,5 @@
+== README
+
+This is going to be a backend API APP for me to use with JS frontends, for messing around and experimenting.
+
+* Ruby version: ruby 2.2.0
