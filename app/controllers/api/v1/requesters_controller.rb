@@ -33,8 +33,11 @@ class Api::V1::RequestersController < ApplicationController
 
   def destroy
     @requester = Requester.find(params[:id])
-    @requester.destroy
-    head :no_content
+    if @requester.destroy
+      render json: {success: true}, status: :ok
+    else
+      render json: @requester.errors, status: :unprocessable_entity
+    end  
   end
 
   private
