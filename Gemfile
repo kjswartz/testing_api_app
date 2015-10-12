@@ -11,6 +11,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'faker'
 ################################################################################
@@ -27,5 +28,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'better_errors'
-  gem 'annotate', '~> 2.6.5' 
+  gem 'annotate', '~> 2.6.5'
 end
