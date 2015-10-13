@@ -48,6 +48,10 @@ end
 @interpreters = Interpreter.all
 @rand_lat = rand(75..90)
 @rand_long = rand(55..75)
+@duration = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225,
+            240, 255, 270, 285, 300, 315, 330, 345, 360, 375, 390, 405, 420, 435,
+            450, 465, 480]
+@job_type = ['Scheduled', 'Now']
 
 25.times do |x|
 @rand_num = rand(0..6)
@@ -60,7 +64,9 @@ end
             language: @language.sample,
             latitude: "27.96#{@rand_lat}".to_f,
             longitude: "-82.47#{@rand_long}".to_f,
-            requester_id: @requesters.sample,
-            interpreter_id: @interpreters.sample
+            duration: @duration.sample,
+            name: @job_type.sample,
+            requester: @requesters.sample,
+            interpreter: @interpreters.sample
             )
 end

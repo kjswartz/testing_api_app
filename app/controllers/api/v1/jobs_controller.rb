@@ -43,7 +43,7 @@ class Api::V1::JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:request_date, :status, :request_wait, :provider_total,
+      params.require(:job).permit(:name, :request_date, :status, :request_wait, :provider_total,
                                   :provider_list, :requester_id, :language, :interpreter_id)
     end
 
