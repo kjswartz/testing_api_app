@@ -18,4 +18,5 @@
 #
 
 class Requester < ActiveRecord::Base
+  has_many :jobs
 end

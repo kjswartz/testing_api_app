@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id             :integer          not null, primary key
+#  request_time   :datetime
+#  request_date   :datetime
+#  status         :text
+#  request_wait   :integer
+#  provider_total :integer
+#  provider_list  :text
+#  language       :string
+#  duration       :integer
+#  patient        :string
+#  requester_id   :integer
+#  interpreter_id :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_date: 
+  status: MyText
+  request_wait: 1
+  provider_total: 1
+  provider_list: MyText
+  requester_id: 
+  language: MyString
+  interpreter_id: 
+
+two:
+  request_date: 
+  status: MyText
+  request_wait: 1
+  provider_total: 1
+  provider_list: MyText
+  requester_id: 
+  language: MyString
+  interpreter_id: 

@@ -24,6 +24,7 @@
 #
 
 class Interpreter < ActiveRecord::Base
+  has_many :jobs
   serialize :language
   serialize :licenses
   serialize :credentials

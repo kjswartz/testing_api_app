@@ -12,7 +12,7 @@
                     email: Faker::Internet.safe_email,
                     address: Faker::Address.street_address,
                     city: Faker::Address.city,
-                    stat: Faker::Address.state_abbr,
+                    state: Faker::Address.state_abbr,
                     zip: Faker::Address.zip_code,
                     language: {name: ["Spanish", "French", "German"]}
                     )
@@ -36,4 +36,31 @@ end
                     permission: @permission.sample,
                     status: @status.sample
                     )
+end
+
+@time = [00, 05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+@type = [1, 2, 3, 4, 5, 6, 7]
+@tname = ['Active', 'Committed', 'Pending', 'Open', 'Completed', 'Denied', 'Canceled']
+@tcolor = ['blue', 'yellow', 'brown', 'red', 'green', 'grey', 'orange']
+@type_object = {type: 1, name: 'Active', color: 'blue'}
+@language = ['Spanish', 'German', 'French', 'ASL', 'Urdu', 'Italian']
+@requesters = Requester.all
+@interpreters = Interpreter.all
+@rand_lat = rand(75..90)
+@rand_long = rand(55..75)
+
+25.times do |x|
+@rand_num = rand(0..6)
+@rand_lat = rand(75..90)
+@rand_long = rand(55..75)
+  Job.create(
+            request_date: "2015-#{rand(10..12)}-#{rand(1..30)}",
+            request_time: "#{rand(0..23)}:#{@time.sample}:00",
+            status: {type: @type[@rand_num], name: @tname[@rand_num], color: @tcolor[@rand_num]},
+            language: @language.sample,
+            latitude: "27.96#{@rand_lat}".to_f,
+            longitude: "-82.47#{@rand_long}".to_f,
+            requester_id: @requesters.sample,
+            interpreter_id: @interpreters.sample
+            )
 end
