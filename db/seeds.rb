@@ -44,7 +44,7 @@ end
                     department_code: @department_code.sample,
                     meeting_place: @meeting_place.sample,
                     permission: @permission.sample,
-                    status: @status.sample
+                    status: @status.sample,
                     )
 end
 
@@ -80,4 +80,11 @@ end
             requester: @requesters.sample,
             interpreter: @interpreters.sample
             )
+end
+
+@j = Job.all
+@j.each do |j|
+  j.requester_object = "#{j.requester.first_name} #{j.requester.last_name}"
+  j.interpreter_object = "#{j.interpreter.first_name} #{j.interpreter.first_name}"
+  j.save
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013162515) do
+ActiveRecord::Schema.define(version: 20151013174943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 20151013162515) do
     t.decimal  "longitude"
     t.integer  "requester_id"
     t.integer  "interpreter_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "name"
+    t.string   "requester_object"
+    t.string   "interpreter_object"
   end
 
   add_index "jobs", ["interpreter_id"], name: "index_jobs_on_interpreter_id", using: :btree
