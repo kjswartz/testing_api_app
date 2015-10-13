@@ -1,3 +1,13 @@
+if Interpreter.count > 0
+  Interpreter.destroy_all
+end
+if Requester.count > 0
+  Requester.destroy_all
+end
+if Job.count > 0
+  Job.destroy_all
+end
+
 50.times do |x|
   Interpreter.create(
                     first_name: Faker::Name.first_name,
@@ -65,6 +75,7 @@ end
             latitude: "27.96#{@rand_lat}".to_f,
             longitude: "-82.47#{@rand_long}".to_f,
             duration: @duration.sample,
+            patient: Faker::Name.name,
             name: @job_type.sample,
             requester: @requesters.sample,
             interpreter: @interpreters.sample
