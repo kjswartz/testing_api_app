@@ -17,7 +17,7 @@
 #  email       :string
 #  address     :string
 #  city        :string
-#  stat        :string
+#  state       :string
 #  zip         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
