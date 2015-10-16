@@ -23,8 +23,12 @@ class Api::V1::PoolsController < ApplicationController
       pools: results.as_json(include:
       {
         interpreters: {},
-        languages: pool_languages
-      })
+      }),
+      results.each do |result|
+        languages: {
+          result.pool_languages
+        }
+      end
     },
       status: :ok
   end
