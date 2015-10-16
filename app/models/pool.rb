@@ -13,13 +13,14 @@ class Pool < ActiveRecord::Base
   has_many :interpreter_pools, dependent: :destroy
   has_many :interpreters, through: :interpreter_pools
 
+  before_save :pool_languages
 
   def pool_languages
     @languages = []
     self.interpreters.each do |i|
       @languages << i.language[:name]
     end
-    return @languages.flatten.uniq
+    self.languages = @languages.flatten.uniq
   end
 
 
