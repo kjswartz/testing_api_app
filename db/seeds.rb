@@ -24,7 +24,8 @@ end
                     city: Faker::Address.city,
                     state: Faker::Address.state_abbr,
                     zip: Faker::Address.zip_code,
-                    language: {name: ["Spanish", "French", "German"]}
+                    language: {name: ["Spanish", "French", "German"]},
+                    profile: "media/user_pic/3.jpg"
                     )
 end
 
