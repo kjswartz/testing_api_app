@@ -17,8 +17,8 @@ class Api::V1::JobsController < ApplicationController
 
     render json: {success: true,
       jobs: results.as_json(include: {
-        interpreter: {only: [:first_name, :last_name]},
-        requester: {only: [:first_name, :last_name]}
+        interpreter: {},
+        requester: {}
         })
       },
       status: :ok
