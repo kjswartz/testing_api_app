@@ -33,7 +33,7 @@ end
 @department_code = ['1234', '5435', '6434', '9573', '6583', '7529', '7234']
 @meeting_place = ['Nurse Station A', 'Room A', 'Room 123', 'Bay 324', 'Front Desk', 'X-Ray', 'Parking A']
 @permission = ['Schedule', 'Admin', 'Observe']
-@status = ['Active', 'Pending', 'Non-Active', 'Flagged']
+@status = ['Active', 'Non-Active', 'Flagged']
 
 25.times do |x|
   Requester.create(
@@ -65,8 +65,8 @@ end
 
 25.times do |x|
 @rand_num = rand(0..6)
-@rand_lat = rand(75..90)
-@rand_long = rand(55..75)
+@rand_lat = rand(10..99)
+@rand_long = rand(10..99)
   Job.create(
             request_date: "2015-#{rand(10..12)}-#{rand(1..30)}",
             request_time: "#{rand(0..23)}:#{@time.sample}:00",
@@ -84,16 +84,8 @@ end
 
 @j = Job.all
 @j.each do |j|
-  j.requester_object = "#{j.requester.first_name} #{j.requester.last_name}"
-  j.interpreter_object = "#{j.interpreter.first_name} #{j.interpreter.last_name}"
-  j.save
-end
-
-@j = Job.all
-@j.each do |j|
   if j.status[:name] == "Pending"
     j.interpreter = nil
-    j.interpreter_object = nil
     j.save
   end
 end
