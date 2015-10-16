@@ -21,7 +21,7 @@ class Pool < ActiveRecord::Base
       @languages << i.language[:name]
     end
     @language = @languages.flatten.uniq
-    self.languages = {name: @language}
+    self.update_attributes(languages: {name: @language})
   end
 
 
