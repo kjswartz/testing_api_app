@@ -24,11 +24,7 @@ class Api::V1::PoolsController < ApplicationController
       {
         interpreters: {},
       }),
-      results.each do |result|
-        languages: {
-          result.pool_languages
-        }
-      end
+      languages: pool_languages
     },
       status: :ok
   end
