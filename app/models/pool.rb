@@ -20,7 +20,7 @@ class Pool < ActiveRecord::Base
     self.interpreters.each do |i|
       @languages << i.language[:name]
     end
-    self.languages = {name: @languages.flatten.uniq}
+    self.languages = @languages.flatten.uniq.join(', ')
   end
 
 
