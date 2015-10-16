@@ -5,29 +5,28 @@ class Api::V1::PoolsController < ApplicationController
 
     @languages = result.pool_languages
 
-    # render :json => {success: true,
-    #   pool: result.as_json(include: {
-    #   interpreters: {},
-    #   })}, :status => :ok
-
-
-    render :json => {success: true,
-      pool: result.as_json(include: {
-      interpreters: {},
-      }), message: @languages}, :status => :ok
-
-
+    render json:
+    {
+      success: true,
+      pool: result.as_json(include: {interpreters: {}}),
+      languages: @languages
+    },
+      status: :ok
   end
-
-
 
   def index
     results = Pool.all
 
-    render :json => {success: true,
-      pools: results.as_json(include: {
-        interpreters: {}
-        })}, status: :ok
+    render json:
+    {
+      success: true,
+      pools: results.as_json(include:
+      {
+        interpreters: {},
+        languages: pool_languages
+      })
+    },
+      status: :ok
   end
 
   def create
