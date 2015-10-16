@@ -2,19 +2,13 @@ class Api::V1::InterpretersController < ApplicationController
 
   def show
     result = Interpreter.find(params[:id])
-    render :json => {success: true,
-      interpreters: result.as_json(include: {
-        pools: {}
-        })}, :status => :ok
+    render :json => {success: true, interpreters: result}, :status => :ok
   end
 
   def index
     results = Interpreter.all
 
-    render :json => {success: true,
-      interpreters: results.as_json(include: {
-        pools: {}
-        })}, :status => :ok
+    render :json => {success: true, interpreters: results}, :status => :ok
   end
 
   def create
@@ -53,7 +47,7 @@ class Api::V1::InterpretersController < ApplicationController
                                         :staff, :status, :credentials,
                                         :specilities, :licenses, :gender, :vaccines, :email,
                                         :address, :email, :city, :state, :zip, :verified,
-                                        :profile, pool_ids: [])
+                                        :profile)
     end
 
 end

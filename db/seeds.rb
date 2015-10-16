@@ -7,6 +7,9 @@ end
 if Job.count > 0
   Job.destroy_all
 end
+if Pool.count > 0
+  Pool.destroy_all
+end
 
 50.times do |x|
   Interpreter.create(
