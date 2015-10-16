@@ -3,22 +3,23 @@ class Api::V1::PoolsController < ApplicationController
   def show
     result = Pool.find(params[:id])
 
-    @languages = pool_languages(result)
+    @languages = result.pool_languages
+
+    # render :json => {success: true,
+    #   pool: result.as_json(include: {
+    #   interpreters: {},
+    #   })}, :status => :ok
+
 
     render :json => {success: true,
       pool: result.as_json(include: {
       interpreters: {},
-      languages: @languages
-      })}, :status => :ok
+      }), message: @languages}, :status => :ok
+
+
   end
 
-  def pool_languages(pool)
-    @languages = []
-    pool.interpreters.each do |i|
-      @languages << i.language[:name]
-    end
-    return @languages.flatten.uniq
-  end
+
 
   def index
     results = Pool.all
