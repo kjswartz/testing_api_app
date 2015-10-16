@@ -33,7 +33,7 @@ end
 @department_code = ['1234', '5435', '6434', '9573', '6583', '7529', '7234']
 @meeting_place = ['Nurse Station A', 'Room A', 'Room 123', 'Bay 324', 'Front Desk', 'X-Ray', 'Parking A']
 @permission = ['Schedule', 'Admin', 'Observe']
-@status = ['Active', 'Non-Active', 'Flagged']
+@status = ['Active', 'Non-Active']
 
 25.times do |x|
   Requester.create(
@@ -84,7 +84,7 @@ end
 
 @j = Job.all
 @j.each do |j|
-  if j.status[:name] == "Pending"
+  if j.status[:name] == "Pending" || j.status[:name] == "Open" || j.status[:name] == "Denied"
     j.interpreter = nil
     j.save
   end
