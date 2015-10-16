@@ -98,5 +98,6 @@ end
   Pool.create(
               name: Faker::Lorem.word,
               staff: true,
+              languages: {name: []}
   )
 end
