@@ -1,14 +1,27 @@
 class Api::V1::JobsController < ApplicationController
 
   def show
-    result = Job.find(params[:id])
-    render :json => {success: true, job: result}, :status => :ok
+    job = Job.find(params[:id])
+    job_json = job.as_json
+    job_json['interpreter'] = job.interpreter
+    job_json['requester'] = job.requester
+    render json: {
+      success: true,
+      job: job_json
+      },
+      status: :ok
   end
 
   def index
     results = Job.all
 
-    render :json => {success: true, jobs: results}, status: :ok
+    render json: {success: true,
+      jobs: results.as_json(include: {
+        interpreter: {only: [:first_name, :last_name]},
+        requester: {only: [:first_name, :last_name]}
+        })
+      },
+      status: :ok
   end
 
   def create

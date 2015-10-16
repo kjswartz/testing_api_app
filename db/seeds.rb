@@ -50,7 +50,7 @@ end
 
 @time = [00, 05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 @type = [1, 2, 3, 4, 5, 6, 7]
-@tname = ['Active', 'Committed', 'Pending', 'Open', 'Completed', 'Denied', 'Canceled']
+@tname = ['Active', 'Committed', 'Pending', 'Open', 'Completed', 'Denied', 'Canceled', 'In Process']
 @tcolor = ['blue', 'yellow', 'brown', 'red', 'green', 'grey', 'orange']
 @type_object = {type: 1, name: 'Active', color: 'blue'}
 @language = ['Spanish', 'German', 'French', 'ASL', 'Urdu', 'Italian']
@@ -85,6 +85,15 @@ end
 @j = Job.all
 @j.each do |j|
   j.requester_object = "#{j.requester.first_name} #{j.requester.last_name}"
-  j.interpreter_object = "#{j.interpreter.first_name} #{j.interpreter.first_name}"
+  j.interpreter_object = "#{j.interpreter.first_name} #{j.interpreter.last_name}"
   j.save
+end
+
+@j = Job.all
+@j.each do |j|
+  if j.status[:name] == "Pending"
+    j.interpreter = nil
+    j.interpreter_object = nil
+    j.save
+  end
 end
