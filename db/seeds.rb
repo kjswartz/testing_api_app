@@ -90,3 +90,10 @@ end
     j.save
   end
 end
+
+10.times do |x|
+  Pool.create(
+              name: Faker::Name.name,
+              staff: true,
+  )
+end

@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: pools
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  staff      :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  staff: false
+  interpreter_id: 
+
+two:
+  name: MyString
+  staff: false
+  interpreter_id: 

@@ -8,7 +8,7 @@
 #  username    :string
 #  language    :text
 #  staff       :boolean
-#  status      :string           default("Pending")
+#  status      :string
 #  credentials :text
 #  specilities :text
 #  licenses    :text
@@ -21,6 +21,8 @@
 #  zip         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  verified    :boolean
+#  profile     :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

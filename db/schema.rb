@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016172646) do
+ActiveRecord::Schema.define(version: 20151016194344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interpreter_pools", force: :cascade do |t|
+    t.integer  "interpreter_id"
+    t.integer  "pool_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "interpreter_pools", ["interpreter_id"], name: "index_interpreter_pools_on_interpreter_id", using: :btree
+  add_index "interpreter_pools", ["pool_id"], name: "index_interpreter_pools_on_pool_id", using: :btree
 
   create_table "interpreters", force: :cascade do |t|
     t.string   "first_name"
@@ -61,6 +71,13 @@ ActiveRecord::Schema.define(version: 20151016172646) do
   add_index "jobs", ["interpreter_id"], name: "index_jobs_on_interpreter_id", using: :btree
   add_index "jobs", ["requester_id"], name: "index_jobs_on_requester_id", using: :btree
 
+  create_table "pools", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "staff"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requesters", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -76,6 +93,8 @@ ActiveRecord::Schema.define(version: 20151016172646) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_foreign_key "interpreter_pools", "interpreters"
+  add_foreign_key "interpreter_pools", "pools"
   add_foreign_key "jobs", "interpreters"
   add_foreign_key "jobs", "requesters"
 end
