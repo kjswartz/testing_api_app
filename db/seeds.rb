@@ -10,6 +10,10 @@ end
 if Pool.count > 0
   Pool.destroy_all
 end
+if Escalation.count > 0
+  Escalation.destroy_all
+end
+
 
 50.times do |x|
   Interpreter.create(
@@ -100,11 +104,12 @@ end
               staff: true,
   )
 end
-
+@pools = Pool.all
 10.times do |x|
   Escalation.create(
               name: Faker::Lorem.word,
               response_time: 10,
               default: false,
+              pools: [@pools.sample]
   )
 end

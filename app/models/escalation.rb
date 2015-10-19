@@ -12,6 +12,4 @@
 
 class Escalation < ActiveRecord::Base
   has_and_belongs_to_many :pools, join_table: :escalation_pools
-  has_and_belongs_to_many :pools, join_table: :escalation_pools
-
 end
