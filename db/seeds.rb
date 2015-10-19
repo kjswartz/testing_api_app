@@ -14,7 +14,7 @@ if Escalation.count > 0
   Escalation.destroy_all
 end
 
-
+@languages = ["Spanish", "French", "German", "Russian", "Italian", "ASL"]
 50.times do |x|
   Interpreter.create(
                     first_name: Faker::Name.first_name,
@@ -31,7 +31,7 @@ end
                     city: Faker::Address.city,
                     state: Faker::Address.state_abbr,
                     zip: Faker::Address.zip_code,
-                    language: {name: ["Spanish", "French", "German"]},
+                    language: {name: [@languages.sample, @languages.sample]},
                     profile: "media/user_pic/3.jpg"
                     )
 end
