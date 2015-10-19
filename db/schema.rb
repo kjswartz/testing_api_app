@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016231201) do
+ActiveRecord::Schema.define(version: 20151019173435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "escalation_pools", id: false, force: :cascade do |t|
+    t.integer "escalation_id"
+    t.integer "pool_id"
+  end
+
+  create_table "escalations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "response_time"
+    t.boolean  "default"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "interpreter_pools", force: :cascade do |t|
     t.integer  "interpreter_id"

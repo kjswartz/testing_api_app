@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: escalations
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  response_time :integer
+#  default       :boolean
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  response_time: 1
+  default: false
+
+two:
+  name: MyString
+  response_time: 1
+  default: false

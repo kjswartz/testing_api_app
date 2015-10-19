@@ -100,3 +100,11 @@ end
               staff: true,
   )
 end
+
+10.times do |x|
+  Escalation.create(
+              name: Faker::Lorem.word,
+              response_time: 10,
+              default: false,
+  )
+end
