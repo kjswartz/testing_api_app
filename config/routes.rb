@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :requesters
       resources :jobs
       resources :pools
+      resources :escalations
 
     end
   end
