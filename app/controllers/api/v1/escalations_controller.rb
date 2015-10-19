@@ -46,7 +46,7 @@ class Api::V1::EscalationsController < ApplicationController
 
   def destroy
     @escalation = Escalation.find(params[:id])
-    if @pool.destroy
+    if @escalation.destroy
       render json: {success: true}, status: :ok
     else
       render json: @escalation.errors, status: :unprocessable_entity
