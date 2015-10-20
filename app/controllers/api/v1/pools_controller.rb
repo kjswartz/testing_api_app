@@ -30,7 +30,7 @@ class Api::V1::PoolsController < ApplicationController
   def create
     @pool = Pool.create(pool_params)
     if @pool.save
-      render json: {success: true, id: @pool.id}, status: :ok
+      render json: {success: true, pool: @pool}, status: :ok
     else
       render json: @pool.errors, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class Api::V1::PoolsController < ApplicationController
     @pool = Pool.find(params[:id])
 
     if @pool.update_attributes(pool_params)
-      render json: {success: true}, status: :ok
+      render json: {success: true, pool: @pool}, status: :ok
     else
       render json: @pool.errors, status: :unprocessable_entity
     end
