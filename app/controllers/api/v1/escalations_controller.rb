@@ -6,7 +6,7 @@ class Api::V1::EscalationsController < ApplicationController
     render json:
     {
       success: true,
-      escalation: result.as_json(include: {escalation_pools: {}}),
+      escalation: result.as_json(include: {escalation_pools: {} }),
     },
       status: :ok
   end
@@ -18,7 +18,7 @@ class Api::V1::EscalationsController < ApplicationController
       success: true,
       escalations: results.as_json(include:
       {
-        escalation_pools: {},
+        pools: {},
       }),
     },
       status: :ok

@@ -112,3 +112,14 @@ end
               default: false,
   )
 end
+
+@escalation = Escalation.all
+@escalation.each do |e|
+  pool = @pools.sample
+  e.escalation_pools.create(
+                            name: pool.name,
+                            response_time: 10,
+                            p_id: 1,
+                            pool: pool
+                            )
+end
