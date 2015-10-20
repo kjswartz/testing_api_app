@@ -110,6 +110,5 @@ end
               name: Faker::Lorem.word,
               response_time: 10,
               default: false,
-              pools: [@pools.sample]
   )
 end

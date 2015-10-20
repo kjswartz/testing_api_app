@@ -11,15 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019173435) do
+ActiveRecord::Schema.define(version: 20151020141516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "escalation_pools", id: false, force: :cascade do |t|
-    t.integer "escalation_id"
-    t.integer "pool_id"
+  create_table "escalation_pools", force: :cascade do |t|
+    t.integer  "escalation_id"
+    t.integer  "pool_id"
+    t.integer  "p_id"
+    t.integer  "response_time"
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "escalation_pools", ["escalation_id"], name: "index_escalation_pools_on_escalation_id", using: :btree
+  add_index "escalation_pools", ["pool_id"], name: "index_escalation_pools_on_pool_id", using: :btree
 
   create_table "escalations", force: :cascade do |t|
     t.string   "name"
@@ -107,6 +115,8 @@ ActiveRecord::Schema.define(version: 20151019173435) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_foreign_key "escalation_pools", "escalations"
+  add_foreign_key "escalation_pools", "pools"
   add_foreign_key "interpreter_pools", "interpreters"
   add_foreign_key "interpreter_pools", "pools"
   add_foreign_key "jobs", "interpreters"

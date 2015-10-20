@@ -6,7 +6,7 @@ class Api::V1::EscalationsController < ApplicationController
     render json:
     {
       success: true,
-      pool: result.as_json(include: {pools: {}}),
+      escalation: result.as_json(include: {escalation_pools: {}}),
     },
       status: :ok
   end
@@ -18,7 +18,7 @@ class Api::V1::EscalationsController < ApplicationController
       success: true,
       escalations: results.as_json(include:
       {
-        pools: {},
+        escalation_pools: {},
       }),
     },
       status: :ok
@@ -56,7 +56,7 @@ class Api::V1::EscalationsController < ApplicationController
   private
 
     def escalation_params
-      params.require(:escalation).permit(:name, :default, :response_time, pool_ids: [])
+      params.require(:escalation).permit(:name, :default, :response_time, :escalation_pools)
     end
 
 end
