@@ -28,7 +28,7 @@ class Api::V1::PoolsController < ApplicationController
   end
 
   def create
-    @requester = Pool.create(pool_params)
+    @pool = Pool.create(pool_params)
     if @pool.save
       render json: {success: true, id: @pool.id}, status: :ok
     else
@@ -39,7 +39,7 @@ class Api::V1::PoolsController < ApplicationController
   def update
     @pool = Pool.find(params[:id])
 
-    if @requester.update_attributes(pool_params)
+    if @pool.update_attributes(pool_params)
       render json: {success: true}, status: :ok
     else
       render json: @pool.errors, status: :unprocessable_entity
@@ -48,7 +48,7 @@ class Api::V1::PoolsController < ApplicationController
   end
 
   def destroy
-    @requester = Pool.find(params[:id])
+    @pool = Pool.find(params[:id])
     if @pool.destroy
       render json: {success: true}, status: :ok
     else
