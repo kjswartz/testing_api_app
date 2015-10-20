@@ -56,7 +56,7 @@ class Api::V1::EscalationsController < ApplicationController
   private
 
     def escalation_params
-      params.require(:escalation).permit(:name, :default, :response_time, escalation_pools: [:pool_id, :p_id, :name, :response_time])
+      params.require(:escalation).permit(:name, :default, :response_time, escalation_pools_attributes: [:pool_id, :p_id, :name, :response_time])
     end
 
 end
