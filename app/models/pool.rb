@@ -14,6 +14,8 @@ class Pool < ActiveRecord::Base
   has_many :interpreter_pools, dependent: :destroy
   has_many :interpreters, through: :interpreter_pools
   has_many :escalation_pools, dependent: :destroy
+  accepts_nested_attributes_for :escalation_pools
+
 
   before_save :pool_languages
 

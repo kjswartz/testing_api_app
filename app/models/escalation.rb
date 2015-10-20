@@ -12,4 +12,8 @@
 
 class Escalation < ActiveRecord::Base
   has_many :escalation_pools, dependent: :destroy
+  has_many :pools, through: :escalation_pools
+  
+  accepts_nested_attributes_for :escalation_pools
+
 end
