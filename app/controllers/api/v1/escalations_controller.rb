@@ -35,7 +35,7 @@ class Api::V1::EscalationsController < ApplicationController
 
   def update
     @escalation = Escalation.find(params[:id])
-
+    @escalation.escalation_pools.destroy_all
     if @escalation.update_attributes(escalation_params)
       render json: {success: true}, status: :ok
     else
