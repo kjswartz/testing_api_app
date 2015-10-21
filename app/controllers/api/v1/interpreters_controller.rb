@@ -14,7 +14,7 @@ class Api::V1::InterpretersController < ApplicationController
   def create
     @interpreter = Interpreter.create(interpreter_params)
     if @interpreter.save
-      render json: {success: true, id: @interpreter.id}, status: :ok
+      render json: {success: true, interpreter: @interpreter}, status: :ok
     else
       render json: @interpreter.errors, status: :unprocessable_entity
     end
