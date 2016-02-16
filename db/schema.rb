@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020141516) do
+ActiveRecord::Schema.define(version: 20160215214152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calendar_jobs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "attrib_list"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "escalation_pools", force: :cascade do |t|
     t.integer  "escalation_id"
@@ -100,6 +107,15 @@ ActiveRecord::Schema.define(version: 20151020141516) do
     t.text     "languages"
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "calendar_job_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "providers", ["calendar_job_id"], name: "index_providers_on_calendar_job_id", using: :btree
+
   create_table "requesters", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -115,10 +131,26 @@ ActiveRecord::Schema.define(version: 20151020141516) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "start_time"
+    t.integer  "duration"
+    t.text     "state"
+    t.integer  "calendar_job_id"
+    t.integer  "provider_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sessions", ["calendar_job_id"], name: "index_sessions_on_calendar_job_id", using: :btree
+  add_index "sessions", ["provider_id"], name: "index_sessions_on_provider_id", using: :btree
+
   add_foreign_key "escalation_pools", "escalations"
   add_foreign_key "escalation_pools", "pools"
   add_foreign_key "interpreter_pools", "interpreters"
   add_foreign_key "interpreter_pools", "pools"
   add_foreign_key "jobs", "interpreters"
   add_foreign_key "jobs", "requesters"
+  add_foreign_key "providers", "calendar_jobs"
+  add_foreign_key "sessions", "calendar_jobs"
+  add_foreign_key "sessions", "providers"
 end

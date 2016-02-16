@@ -3,3 +3,37 @@
 This is going to be a backend API APP for me to use with JS frontends, for messing around and experimenting.
 
 * Ruby version: ruby 2.2.0
+
+
+GET: cal_jobs
+params:
+  enterprise_id: INT
+  start_date: "MMDDYYYY"
+  end_date: "MMDDYYYY"
+Returns:
+  success: boolean
+  job_list: list of all the jobs
+    job_id: int
+    name: string
+    attrib_list: list of job attributes used to filter view by
+      language
+      location
+      place
+      specialty
+    session_list: list of all sessions associated to job. Could be only one
+      session_id: int
+      start_time: datetime
+      duration: int
+      state:
+        type: int
+        name: string (booked, empty, completed, active, pending, overlap)
+    provider_list: list of all providers qualified or assigned to job
+      user_id: int
+      name: string
+      session_list: list of all sessions provider assigned to
+        session_id: int
+        start_time: datetime
+        duration: int
+        state:
+          type: int
+          name: string (booked, empty, completed, active, pending, overlap)
