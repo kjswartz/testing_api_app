@@ -6,7 +6,7 @@ class Api::V1::CalendarJobsController < ApplicationController
   def index
     results = CalendarJob.all
 
-    render :json => {success: true, job_list: results}, :status => :ok
+    render :json => {success: true, job_list: results.as_json(include: {sessions:{}, providers:{}})}, :status => :ok
   end
 
   def create
