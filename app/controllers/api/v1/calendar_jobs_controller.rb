@@ -4,7 +4,7 @@ class Api::V1::CalendarJobsController < ApplicationController
   end
 
   def index
-    results = CalendarJobs.all
+    results = CalendarJob.all
 
     render :json => {success: true, job_list: results}, :status => :ok
   end
