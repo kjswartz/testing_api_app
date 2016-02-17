@@ -10,7 +10,7 @@ class Api::V1::CalendarJobsController < ApplicationController
       success: true,
       job_list: results.as_json(include: {
         sessions:{only: [:id, :start_time, :duration, :state]},
-        providers:{only: [:id, :name]}
+        providers:{only: [:id, :name], include:{sessions:{only: [:id, :start_time, :duration, :state]}}}
         })
       },
       :status => :ok
