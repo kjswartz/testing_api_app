@@ -148,7 +148,7 @@ end
                     )
 end
 @dur = [60, 120, 180, 240, 300, 360, 420]
-@state_name = ['booked', 'empty', 'completed', 'active', 'pending']
+@state_name = ['committed', 'open', 'completed', 'active', 'pending']
 40.times do |x|
   Session.create(
                     start_time: DateTime.new(2016,2,rand(17..21),rand(1..23),rand(0..50),0),

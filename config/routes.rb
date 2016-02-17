@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :pools
       resources :escalations
       resources :calendar_jobs
+      resources :providers
 
     end
   end
