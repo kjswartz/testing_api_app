@@ -8,9 +8,9 @@ class Api::V1::ProvidersController < ApplicationController
 
     render :json => {
       success: true,
-      provider_list: results.as_json(include: {
+      provider_list: results.as_json(except: [:created_at, :updated_at], include: {
         sessions:{only: [:id, :start_time, :duration, :state]},
-        calendar_job:{}
+        calendar_job:{except: [:created_at, :updated_at], include:{sessions:{only: [:id, :start_time, :duration, :state]}}}
         })
       },
       :status => :ok
