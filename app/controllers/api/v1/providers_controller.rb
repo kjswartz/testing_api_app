@@ -10,7 +10,7 @@ class Api::V1::ProvidersController < ApplicationController
       success: true,
       provider_list: results.as_json(include: {
         sessions:{only: [:id, :start_time, :duration, :state]},
-        jobs:{}
+        calendar_job:{}
         })
       },
       :status => :ok
